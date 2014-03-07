@@ -1,0 +1,14 @@
+updateInterval: 10s
+clusters:
+    - name: cache-use1c
+      endpoint: cache-use1c.foobar.com:11211
+      version: 1.4.14
+    - name: cache-use1d
+      endpoint: cache-use1d.foobar.com:11211
+      version: 1.4.14
+mappings:
+    - name: megacache
+      listenAddress: 127.0.0.1:11211
+      clusters:
+          - cache-use1c
+          - cache-use1d
