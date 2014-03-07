@@ -15,3 +15,15 @@ what does this do
 ecaggregate takes all of your configuration endpoints, and constantly queries them to get the latest information all in one place.  the twist is that it then lets you listen on a custom port, or ports, and it can combine the responses from multiple configuration endpoints and serve them locally.
 
 the simple example is that you're straddling three AZs, so you have three configuration endpoints.  you configure ecaggregate to query all three of them.  then, you configure ecaggregate to listen on localhost:11211, for example.  you configure that mapping (a mapping is a port to listen on and a list of configuration endpoints to combine the data from) to return the data from the three different configuration endpoints in a single response.  so, now, instead of having to query those three endpoints manually, you query the local one and it returns the combined node list of all three.  voila!
+
+known limitations
+===========
+
+- doesn't support binary protocol (won't speak it to actual configuration endpoints or to callers querying it)
+- doesn't increment cluster config versions (yet)
+
+
+credits
+===========
+- some client handling code taken from [bradfitz/gomemcache](https://github.com/bradfitz/gomemcache)
+- some server handling code taken from [valyala/ybc](https://github.com/valyala/ybc)
